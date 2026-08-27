@@ -201,6 +201,23 @@
     font-family:'IBM Plex Mono', monospace;
   }
 
+  .video{
+    margin-bottom:14px;
+  }
+  .video:last-child{margin-bottom:0;}
+  .video-titulo{
+    font-size:13px;
+    font-weight:500;
+    margin:0 0 8px;
+  }
+  .video video{
+    width:100%;
+    display:block;
+    border-radius:3px;
+    border:1px solid var(--acero-borde);
+    background:#000;
+  }
+
   /* ---------- Sección 2: grilla por unidad ---------- */
   .grilla-unidades{
     display:grid;
@@ -269,29 +286,64 @@
     <div class="r2"></div>
     <div class="modelo-line">
       <p class="codigo">Modelo</p>
-      <p class="nombre">[Marca / Modelo]</p>
+      <p class="nombre">C227</p>
     </div>
 
     <div class="doc">
       <div class="doc-info">
         <div class="doc-icono">PDF</div>
         <div>
-          <div class="doc-nombre">Manual del operador</div>
-          <div class="doc-desc pendiente">Pendiente de carga</div>
+          <div class="doc-nombre">Manual C227</div>
         </div>
       </div>
-      <a class="btn primario" href="./docs/manual.pdf" target="_blank" rel="noopener">Ver</a>
+      <a class="btn primario" href="./docs/Manual%20C227.pdf" target="_blank" rel="noopener">Ver</a>
     </div>
 
     <div class="doc">
       <div class="doc-info">
         <div class="doc-icono">PDF</div>
         <div>
-          <div class="doc-nombre">Ficha técnica</div>
-          <div class="doc-desc pendiente">Pendiente de carga</div>
+          <div class="doc-nombre">Manual de instalación y conexionado</div>
         </div>
       </div>
-      <a class="btn primario" href="./docs/ficha-tecnica.pdf" target="_blank" rel="noopener">Ver</a>
+      <a class="btn primario" href="./docs/MANUAL%20DE%20INSTALACION%20Y%20CONEXIONADO.pdf" target="_blank" rel="noopener">Ver</a>
+    </div>
+
+    <div class="doc">
+      <div class="doc-info">
+        <div class="doc-icono">PDF</div>
+        <div>
+          <div class="doc-nombre">C227 — Conexionado</div>
+        </div>
+      </div>
+      <a class="btn primario" href="./docs/C227%20CONEXIONADO.pdf" target="_blank" rel="noopener">Ver</a>
+    </div>
+
+    <!-- ===== Videos ===== -->
+    <p class="docs-title" style="margin-top:20px;">Videos</p>
+
+    <div class="video">
+      <p class="video-titulo">Configuración inicial</p>
+      <video controls preload="metadata" playsinline>
+        <source src="./docs/CONFIGURACION%20INICIAL.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+      </video>
+    </div>
+
+    <div class="video">
+      <p class="video-titulo">Configuración</p>
+      <video controls preload="metadata" playsinline>
+        <source src="./docs/CONFIGURACION.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+      </video>
+    </div>
+
+    <div class="video">
+      <p class="video-titulo">Switch de freno</p>
+      <video controls preload="metadata" playsinline>
+        <source src="./docs/SWICHT%20FRENO.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+      </video>
     </div>
   </section>
 
