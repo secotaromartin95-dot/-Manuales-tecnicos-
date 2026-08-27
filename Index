@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manuales y documentación — Jonathan S.A.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --grafito: #1b1d1e;
+    --acero: #26292a;
+    --acero-borde: #3a3e40;
+    --amarillo: #f5b300;
+    --oxido: #c1440e;
+    --hueso: #edebe6;
+    --piedra2: #8b9096;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--grafito);
+    color:var(--hueso);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  .hazard{
+    height:8px;
+    background:repeating-linear-gradient(
+      45deg,
+      var(--amarillo) 0 12px,
+      #141516 12px 24px
+    );
+  }
+
+  header{
+    padding:28px 20px 18px;
+    text-align:center;
+    border-bottom:1px solid var(--acero-borde);
+  }
+  .marca{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    font-size:11px;
+    color:var(--piedra2);
+    margin:0 0 6px;
+  }
+  h1{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    font-size:clamp(22px, 5vw, 32px);
+    margin:0 0 6px;
+  }
+  .sub{
+    color:var(--piedra2);
+    font-size:14px;
+    margin:0;
+  }
+
+  main{
+    max-width:760px;
+    margin:0 auto;
+    padding:32px 16px 80px;
+  }
+
+  .bloque-titulo{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin:0 0 14px;
+  }
+  .bloque-num{
+    font-family:'Oswald', sans-serif;
+    font-size:13px;
+    letter-spacing:.15em;
+    color:var(--amarillo);
+  }
+  .bloque-nombre{
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    font-size:clamp(17px,3.6vw,21px);
+    margin:0;
+  }
+  .bloque-desc{
+    color:var(--piedra2);
+    font-size:13px;
+    margin:-8px 0 16px;
+  }
+
+  /* ---------- Placa base (elemento distintivo) ---------- */
+  .placa{
+    background:var(--acero);
+    border:1px solid var(--acero-borde);
+    border-radius:4px;
+    position:relative;
+    padding:22px 20px 20px;
+  }
+  .placa::before, .placa::after,
+  .placa .r2::before, .placa .r2::after{
+    content:"";
+    position:absolute;
+    width:7px; height:7px;
+    border-radius:50%;
+    background:#0f1011;
+    box-shadow: inset 0 0 0 1px #4a4e50, 0 1px 0 rgba(255,255,255,.05);
+  }
+  .placa::before{ top:10px; left:10px; }
+  .placa::after{ top:10px; right:10px; }
+  .placa .r2::before{ bottom:10px; left:10px; }
+  .placa .r2::after{ bottom:10px; right:10px; }
+
+  .modelo-line{
+    border-bottom:1px dashed var(--acero-borde);
+    padding-bottom:14px;
+    margin-bottom:16px;
+  }
+  .modelo-line .codigo{
+    font-family:'Oswald', sans-serif;
+    font-size:12px;
+    letter-spacing:.2em;
+    color:var(--piedra2);
+    text-transform:uppercase;
+    margin:0 0 2px;
+  }
+  .modelo-line .nombre{
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    font-size:clamp(18px,4vw,24px);
+    text-transform:uppercase;
+    margin:0;
+  }
+
+  .doc{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:12px 14px;
+    background:var(--grafito);
+    border:1px solid var(--acero-borde);
+    border-radius:3px;
+    margin-bottom:8px;
+  }
+  .doc:last-child{margin-bottom:0;}
+  .doc-info{display:flex; align-items:center; gap:10px; min-width:0;}
+  .doc-icono{
+    flex:0 0 auto;
+    width:30px; height:30px;
+    border-radius:3px;
+    background:rgba(245,179,0,.1);
+    border:1px solid rgba(245,179,0,.3);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--amarillo);
+  }
+  .doc-nombre{
+    font-size:14px;
+    font-weight:500;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .doc-desc{
+    font-size:12px;
+    color:var(--piedra2);
+  }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    text-decoration:none;
+    padding:8px 12px;
+    border-radius:2px;
+    border:1px solid var(--acero-borde);
+    color:var(--hueso);
+    transition:.15s;
+    flex:0 0 auto;
+  }
+  .btn:hover{border-color:var(--amarillo); color:var(--amarillo);}
+  .btn.primario{
+    background:var(--amarillo);
+    border-color:var(--amarillo);
+    color:#1b1d1e;
+    font-weight:600;
+  }
+  .btn.primario:hover{background:#ffc82e;}
+  .pendiente{
+    color:var(--oxido);
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  /* ---------- Sección 2: grilla por unidad ---------- */
+  .grilla-unidades{
+    display:grid;
+    gap:14px;
+  }
+  .unidad-card .modelo-line{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .patente{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:16px;
+    letter-spacing:.06em;
+    background:rgba(245,179,0,.1);
+    border:1px solid rgba(245,179,0,.3);
+    color:var(--amarillo);
+    padding:4px 10px;
+    border-radius:2px;
+  }
+
+  .divisor{
+    height:1px;
+    margin:36px 0;
+    background:repeating-linear-gradient(
+      90deg,
+      var(--acero-borde) 0 8px,
+      transparent 8px 14px
+    );
+  }
+
+  footer{
+    text-align:center;
+    padding:24px;
+    color:var(--piedra2);
+    font-size:12px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<div class="hazard"></div>
+
+<header>
+  <p class="marca">JONATHAN S.A.</p>
+  <h1>Manuales y documentación</h1>
+  <p class="sub">Información técnica común + documentación legal por unidad</p>
+</header>
+
+<main>
+
+  <!-- =======================================================
+       SECCIÓN 1 — INFORMACIÓN TÉCNICA (una sola vez, común a las 3 unidades)
+       Reemplazar: nombre de modelo y links de documentos en ./docs/
+       ======================================================= -->
+  <div class="bloque-titulo">
+    <span class="bloque-num">01</span>
+    <h2 class="bloque-nombre">Información técnica</h2>
+  </div>
+  <p class="bloque-desc">Manual y ficha técnica del modelo — válidos para las 3 unidades.</p>
+
+  <section class="placa">
+    <div class="r2"></div>
+    <div class="modelo-line">
+      <p class="codigo">Modelo</p>
+      <p class="nombre">[Marca / Modelo]</p>
+    </div>
+
+    <div class="doc">
+      <div class="doc-info">
+        <div class="doc-icono">PDF</div>
+        <div>
+          <div class="doc-nombre">Manual del operador</div>
+          <div class="doc-desc pendiente">Pendiente de carga</div>
+        </div>
+      </div>
+      <a class="btn primario" href="./docs/manual.pdf" target="_blank" rel="noopener">Ver</a>
+    </div>
+
+    <div class="doc">
+      <div class="doc-info">
+        <div class="doc-icono">PDF</div>
+        <div>
+          <div class="doc-nombre">Ficha técnica</div>
+          <div class="doc-desc pendiente">Pendiente de carga</div>
+        </div>
+      </div>
+      <a class="btn primario" href="./docs/ficha-tecnica.pdf" target="_blank" rel="noopener">Ver</a>
+    </div>
+  </section>
+
+  <div class="divisor"></div>
+
+  <!-- =======================================================
+       SECCIÓN 2 — DOCUMENTACIÓN POR UNIDAD (patente + homologación, propia de cada una)
+       Reemplazar: patente y link de homologación de cada unidad
+       ======================================================= -->
+  <div class="bloque-titulo">
+    <span class="bloque-num">02</span>
+    <h2 class="bloque-nombre">Documentación por unidad</h2>
+  </div>
+  <p class="bloque-desc">Formulario de homologación correspondiente a cada dominio.</p>
+
+  <div class="grilla-unidades">
+
+    <section class="placa unidad-card">
+      <div class="r2"></div>
+      <div class="modelo-line">
+        <div>
+          <p class="codigo">Unidad 01</p>
+        </div>
+        <span class="patente">AA 000 AA</span>
+      </div>
+      <div class="doc">
+        <div class="doc-info">
+          <div class="doc-icono">PDF</div>
+          <div>
+            <div class="doc-nombre">Formulario de homologación</div>
+            <div class="doc-desc pendiente">Pendiente de carga</div>
+          </div>
+        </div>
+        <a class="btn primario" href="./docs/homologacion-unidad-1.pdf" target="_blank" rel="noopener">Ver</a>
+      </div>
+    </section>
+
+    <section class="placa unidad-card">
+      <div class="r2"></div>
+      <div class="modelo-line">
+        <div>
+          <p class="codigo">Unidad 02</p>
+        </div>
+        <span class="patente">AA 000 AA</span>
+      </div>
+      <div class="doc">
+        <div class="doc-info">
+          <div class="doc-icono">PDF</div>
+          <div>
+            <div class="doc-nombre">Formulario de homologación</div>
+            <div class="doc-desc pendiente">Pendiente de carga</div>
+          </div>
+        </div>
+        <a class="btn primario" href="./docs/homologacion-unidad-2.pdf" target="_blank" rel="noopener">Ver</a>
+      </div>
+    </section>
+
+    <section class="placa unidad-card">
+      <div class="r2"></div>
+      <div class="modelo-line">
+        <div>
+          <p class="codigo">Unidad 03</p>
+        </div>
+        <span class="patente">AA 000 AA</span>
+      </div>
+      <div class="doc">
+        <div class="doc-info">
+          <div class="doc-icono">PDF</div>
+          <div>
+            <div class="doc-nombre">Formulario de homologación</div>
+            <div class="doc-desc pendiente">Pendiente de carga</div>
+          </div>
+        </div>
+        <a class="btn primario" href="./docs/homologacion-unidad-3.pdf" target="_blank" rel="noopener">Ver</a>
+      </div>
+    </section>
+
+  </div>
+
+</main>
+
+<div class="hazard"></div>
+<footer>Jonathan S.A. — documentación técnica de unidades</footer>
+
+</body>
+</html>
