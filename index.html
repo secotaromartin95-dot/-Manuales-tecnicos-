@@ -218,6 +218,45 @@
     background:#000;
   }
 
+  /* ---------- Lista de repuestos ---------- */
+  .repuestos{
+    width:100%;
+    border-collapse:collapse;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+  }
+  .repuestos th{
+    text-align:left;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--piedra2);
+    font-weight:500;
+    padding:0 10px 10px 0;
+    border-bottom:1px solid var(--acero-borde);
+  }
+  .repuestos td{
+    padding:12px 10px 12px 0;
+    border-bottom:1px solid var(--acero-borde);
+    vertical-align:top;
+  }
+  .repuestos tr:last-child td{border-bottom:none;}
+  .rep-codigo{
+    color:var(--amarillo);
+    white-space:nowrap;
+  }
+  .rep-nombre{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:500;
+    font-size:14px;
+  }
+  .rep-desc{
+    font-family:'IBM Plex Sans', sans-serif;
+    color:var(--piedra2);
+    font-size:12px;
+  }
+
   /* ---------- Sección 2: grilla por unidad ---------- */
   .grilla-unidades{
     display:grid;
@@ -350,11 +389,52 @@
   <div class="divisor"></div>
 
   <!-- =======================================================
-       SECCIÓN 2 — DOCUMENTACIÓN POR UNIDAD (patente + homologación, propia de cada una)
-       Reemplazar: patente y link de homologación de cada unidad
+       SECCIÓN 2 — REPUESTOS DISPONIBLES (listado, sin precio ni botón de contacto)
+       Reemplazar/agregar filas con código, nombre y descripción de cada repuesto
        ======================================================= -->
   <div class="bloque-titulo">
     <span class="bloque-num">02</span>
+    <h2 class="bloque-nombre">Repuestos disponibles</h2>
+  </div>
+  <p class="bloque-desc">Repuestos que se pueden conseguir para este modelo.</p>
+
+  <section class="placa">
+    <div class="r2"></div>
+    <table class="repuestos">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Repuesto</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rep-codigo">—</td>
+          <td class="rep-nombre">[Nombre del repuesto]</td>
+          <td class="rep-desc">[Descripción breve]</td>
+        </tr>
+        <tr>
+          <td class="rep-codigo">—</td>
+          <td class="rep-nombre">[Nombre del repuesto]</td>
+          <td class="rep-desc">[Descripción breve]</td>
+        </tr>
+        <tr>
+          <td class="rep-codigo">—</td>
+          <td class="rep-nombre">[Nombre del repuesto]</td>
+          <td class="rep-desc">[Descripción breve]</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="divisor"></div>
+
+  <!-- =======================================================
+       SECCIÓN 3 — DOCUMENTACIÓN POR UNIDAD (patente + homologación, propia de cada una)
+       ======================================================= -->
+  <div class="bloque-titulo">
+    <span class="bloque-num">03</span>
     <h2 class="bloque-nombre">Documentación por unidad</h2>
   </div>
   <p class="bloque-desc">Formulario de homologación correspondiente a cada dominio.</p>
